@@ -1,6 +1,7 @@
 # Minikube on GCP Exploration
 
-This project documents my hands-on exploration of Kubernetes using Minikube on a GCP Compute Engine VM. The goal is to refresh and deepen my Kubernetes knowledge in preparation for the CKA, KCNA, and AWS Solutions Architect exams, while building daily GitHub commit habits.
+This project documents my hands-on exploration of Kubernetes using Minikube on a GCP Compute Engine VM.
+The goal is to refresh and deepen my Kubernetes knowledge in preparation for the KCNA, GCP and AWS Solutions Architect exams, while building daily GitHub commit habits.
 
 ---
 
@@ -41,8 +42,7 @@ This project documents my hands-on exploration of Kubernetes using Minikube on a
 ## 📚 Certification Goals
 
 - Google Cloud Associate Engineer  
-- Kubernetes and Cloud Native Associate (KCNA)  
-- Certified Kubernetes Administrator (CKA)  
+- Kubernetes and Cloud Native Associate (KCNA)    
 - AWS Solutions Architect Associate
 
 ---
