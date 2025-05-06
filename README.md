@@ -1,60 +1,50 @@
-# Minikube on GCP Exploration
+# 🚀 Minikube Kubernetes Exploration on GCP
 
-This project documents my hands-on exploration of Kubernetes using Minikube on a GCP Compute Engine VM.
-The goal is to refresh and deepen my Kubernetes knowledge in preparation for the KCNA, GCP and AWS Solutions Architect exams, while building daily GitHub commit habits.
-
----
-
-## 🚀 What I'll Explore
-
-✅ Set up Minikube on GCP VM (Ubuntu/Debian)  
-✅ Install kubectl and verify cluster connectivity  
-✅ Deploy sample workloads (nginx, busybox, etc.)  
-✅ Play with Kubernetes objects:
-- Pods
-- Deployments
-- Services
-- ConfigMaps & Secrets
-- Volumes & PersistentVolumeClaims
-
-✅ Work with Helm (optional bonus)  
-✅ Enable Minikube addons (dashboard, ingress, metrics-server)  
-✅ Scale deployments  
-✅ Perform rolling updates and rollbacks  
-✅ Practice port-forwarding, logs, and exec  
-✅ Test node failure by stopping the Minikube node  
-✅ Tear down cleanly
+This project is a hands-on exploration of Kubernetes concepts using Minikube on a Google Cloud Platform (GCP) Compute Engine VM.  
+It is designed to prepare for the **KCNA certification** and demonstrate a strong foundation in Kubernetes for real-world use and interviews.
 
 ---
 
-## ⚙️ Setup Commands
+## 💡 Project Goals
 
-1. Create GCP VM with proper resources  
-2. Install Docker, Minikube, and kubectl  
-3. Start Minikube  
-4. Enable addons  
-5. Deploy sample apps  
-6. Explore Kubernetes resources  
-7. Clean up
+✅ Set up Minikube on a GCP VM  
+✅ Explore core Kubernetes objects and workloads  
+✅ Understand security, RBAC, networking, and storage  
+✅ Document YAML configs and `kubectl` usage  
+✅ Build a clean and well-structured GitHub repo for portfolio
 
 ---
 
-## 📚 Certification Goals
+## 📚 Lab Sections
 
-- Google Cloud Associate Engineer  
-- Kubernetes and Cloud Native Associate (KCNA)    
-- AWS Solutions Architect Associate
+### 1️⃣ Minikube Setup and Cluster Basics
+- Install Minikube on GCP
+- Start and manage the cluster
+- Understand `kubectl` commands
+- Explore the Kubernetes dashboard
+
+### 2️⃣ Core Kubernetes Objects
+- Deployments, Pods, ReplicaSets, Services
+- ConfigMaps and Secrets
+
+### 3️⃣ Advanced Workloads
+- StatefulSets, DaemonSets
+- Jobs and CronJobs
+
+### 4️⃣ Access, Security, and Observability
+- Namespaces
+- ServiceAccounts and RBAC
+- Resource Limits
+- Readiness and Liveness Probes
+- Logs and Metrics
+
+### 5️⃣ Networking and Storage
+- NetworkPolicies
+- PersistentVolumes and PersistentVolumeClaims
+- Ingress resources
 
 ---
 
-## 💡 Daily Habit
+## 🗂️ Repository Structure
 
-✅ Minimum one commit per day documenting labs, insights, configs, or scripts.
-
----
-
-## 🌎 References
-
-- [Minikube Documentation](https://minikube.sigs.k8s.io/docs/)
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
 
