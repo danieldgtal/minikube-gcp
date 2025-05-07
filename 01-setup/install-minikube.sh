@@ -1,6 +1,5 @@
 ### 📜 `01-setup/install-minikube.sh`
 
-
 #!/bin/bash
 
 set -e
