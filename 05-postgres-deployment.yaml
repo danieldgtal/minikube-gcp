@@ -32,11 +32,11 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: webapp-secrets
-                  key: DB_DATABASE
+                  key: DB_USERNAME
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: webapp-config
+                secretKeyRef:
+                  name: webapp-secrets
                   key: DB_PASSWORD
           volumeMounts:
             - name: postgres-data
