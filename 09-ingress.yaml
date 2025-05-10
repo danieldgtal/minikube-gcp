@@ -9,8 +9,6 @@ spec:
   rules:
     - host: webapp-demo.com
       http:
-        paths: /
-    - http:
         paths:
           - path: /
             pathType: Prefix
