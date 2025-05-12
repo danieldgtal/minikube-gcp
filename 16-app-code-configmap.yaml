@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-code
+  namespace: webapp-demo
+data:
+  index.php: |
+    <?php
+    $host = getenv('DB_HOST');
+    $port = getenv('DB_PORT');
+    $database = getenv('DB_DATABASE');
+    $username = getenv('DB_USERNAME');
+    $password = getenv('DB_PASSWORD');
+
+    echo "<h1>Web Application with PostgreSQL Connection</h1>";
+
+    // Create connection
+    $conn_string = "host=$host port=$port dbname=$database user=$username password=$password";
+
+    echo "<p>Attempting to connect to PostgreSQL database...</p>";
+
+    try {
+        $dbconn = pg_connect($conn_string);
+        
+        if ($dbconn) {
+            echo "<p style='color: green;'>Successfully connected to PostgreSQL database!</p>";
+            
+            // Create a table if it doesn't exist
+            $create_table_query = "CREATE TABLE IF NOT EXISTS visitors (
+                id SERIAL PRIMARY KEY,
+                visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )";
+            
+            pg_query($dbconn, $create_table_query);
+            
+            // Insert a new record
+            pg_query($dbconn, "INSERT INTO visitors (visit_time) VALUES (NOW())");
+            
+            // Get visit count
+            $result = pg_query($dbconn, "SELECT COUNT(*) FROM visitors");
+            $row = pg_fetch_row($result);
+            $visit_count = $row[0];
+            
+            echo "<p>You are visitor number: $visit_count</p>";
+            
+            // Close the connection
+            pg_close($dbconn);
+        } else {
+            echo "<p style='color: red;'>Failed to connect to PostgreSQL database!</p>";
+            echo "<p>Connection error: " . pg_last_error() . "</p>";
+        }
+    } catch (Exception $e) {
+        echo "<p style='color: red;'>Exception caught: " . $e->getMessage() . "</p>";
+    }
+
+    echo "<h2>Environment Information:</h2>";
+    echo "<ul>";
+    echo "<li>DB Host: $host</li>";
+    echo "<li>DB Port: $port</li>";
+    echo "<li>DB Name: $database</li>";
+    echo "<li>Pod IP: " . $_SERVER['SERVER_ADDR'] . "</li>";
+    echo "<li>Pod Hostname: " . gethostname() . "</li>";
+    echo "</ul>";
+    ?>
+
+  health.php: |
+    <?php
+    // Simple health check endpoint
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'ok', 'timestamp' => time()]);
+    ?>
