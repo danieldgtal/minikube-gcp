@@ -20,11 +20,20 @@ spec:
       labels:
         app: webapp
     spec:
+      initContainers:
+        - name: copy-app-code
+          image: busybox
+          command: ["sh", "-c", "cp -r /source/* /app/"]
+          volumeMounts:
+            - name: app-code-config
+              mountPath: /source
+            - name: app-code
+              mountPath: /app
       containers:
         - name: webapp
-          image: nginx:alpine
+          image: bitnami/php-fpm:8.2
           ports:
-            - containerPort: 80
+            - containerPort: 9000
           resources:
             requests:
               memory: "64Mi"
@@ -33,15 +42,13 @@ spec:
               memory: "128Mi"
               cpu: "200m"
           readinessProbe:
-            httpGet:
-              path: /
-              port: 80
+            tcpSocket:
+              port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
-            httpGet:
-              path: /
-              port: 80
+            tcpSocket:
+              port: 9000
             initialDelaySeconds: 15
             periodSeconds: 20
           envFrom:
@@ -58,3 +65,24 @@ spec:
                 secretKeyRef:
                   name: webapp-secrets
                   key: DB_PASSWORD
+          volumeMounts:
+            - name: app-code
+              mountPath: /app
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+            - name: app-code
+              mountPath: /app
+      volumes:
+        - name: app-code
+          emptyDir: {}
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+        - name: app-code-config
+          configMap:
+            name: app-code
