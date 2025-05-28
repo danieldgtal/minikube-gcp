@@ -1,3 +1,6 @@
+# This file contains the Persistent Volume (PV) and Persistent Volume Claim (PVC) configurations for a PostgreSQL database in a Kubernetes cluster.
+# Persistent Volume and Persistent Volume Claim for PostgreSQL Database
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
