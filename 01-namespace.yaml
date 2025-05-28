@@ -1,3 +1,6 @@
+# This file defines a Kubernetes Namespace resource.
+# Namespace configuration for web application demo
+
 apiVersion: v1
 kind: Namespace
 metadata:
