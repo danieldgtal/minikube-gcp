@@ -1,4 +1,7 @@
-### 📜 `01-setup/install-minikube.sh`
+## This file installs minikube on a machine and configures docker and minikube to run a local Kubernetes cluster.
+# This script is intended for Ubuntu 22.04 and assumes that the user has sudo privileges.
+# It installs the necessary dependencies, configures Docker, and starts a Minikube cluster.
+## 📜 `01-setup/install-minikube.sh`
 
 #!/bin/bash
 
